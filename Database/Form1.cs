@@ -73,17 +73,27 @@ namespace Database
         int ID = 0;
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellEventArgs e)
-        { ID = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
-          Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Nimetus"].Value;
-          Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Kogus"].Value;
-          Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Hind"].Value;
+        {
+            ID = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
+            Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Nimetus"].Value.ToString();
+            Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Kogus"].Value.ToString();
+            Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Hind"].Value.ToString();
+            try 
+            {
+                pictureBox1.Image = Image.FromFile(Path.Combine(Path.GetFullPath(@"..\..\Pildid"), dataGridView1.Rows[e.RowIndex].Cells["Pilt"].Value.ToString()));
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            catch (Exception)
+            {
+                pictureBox1.Image = Image.FromFile(Path.Combine(Path.GetFullPath(@"..\..\Pildid"), "pilt.png"));
+            }
         }
 
 
-            //ID = (int)dataGridview1.Rows[e.RowIndex].Cells["Id"].Value;
-            //Nimetus_txt.Text = dataGridview1.Rows[e.RowIndex].Cells["Nimetus"].Value;
-            //Nimetus_txt.Text = dataGridview1.Rows[e.RowIndex].Cells["Kogus"].Value;
-            //Nimetus_txt.Text = dataGridview1.Rows[e.RowIndex].Cells["Hind"].Value;
+        //ID = (int)dataGridview1.Rows[e.RowIndex].Cells["Id"].Value;
+        //Nimetus_txt.Text = dataGridview1.Rows[e.RowIndex].Cells["Nimetus"].Value;
+        //Nimetus_txt.Text = dataGridview1.Rows[e.RowIndex].Cells["Kogus"].Value;
+        //Nimetus_txt.Text = dataGridview1.Rows[e.RowIndex].Cells["Hind"].Value;
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -147,6 +157,11 @@ namespace Database
                     pictureBox1.Image = Image.FromFile(save.FileName);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

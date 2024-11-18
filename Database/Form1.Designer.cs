@@ -43,10 +43,17 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.otsipilt_btn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toodedBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nimetusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kogusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hindDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kustuta_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -135,7 +142,14 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nimetusDataGridViewTextBoxColumn,
+            this.kogusDataGridViewTextBoxColumn,
+            this.hindDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.toodedBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(68, 268);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(509, 170);
@@ -144,7 +158,7 @@
             // 
             // otsipilt_btn
             // 
-            this.otsipilt_btn.Location = new System.Drawing.Point(362, 218);
+            this.otsipilt_btn.Location = new System.Drawing.Point(508, 218);
             this.otsipilt_btn.Name = "otsipilt_btn";
             this.otsipilt_btn.Size = new System.Drawing.Size(141, 35);
             this.otsipilt_btn.TabIndex = 11;
@@ -160,11 +174,52 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // toodedBindingSource1
+            // 
+            this.toodedBindingSource1.DataMember = "Tooded";
+            this.toodedBindingSource1.DataSource = this.database_DataSet;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nimetusDataGridViewTextBoxColumn
+            // 
+            this.nimetusDataGridViewTextBoxColumn.DataPropertyName = "Nimetus";
+            this.nimetusDataGridViewTextBoxColumn.HeaderText = "Nimetus";
+            this.nimetusDataGridViewTextBoxColumn.Name = "nimetusDataGridViewTextBoxColumn";
+            // 
+            // kogusDataGridViewTextBoxColumn
+            // 
+            this.kogusDataGridViewTextBoxColumn.DataPropertyName = "kogus";
+            this.kogusDataGridViewTextBoxColumn.HeaderText = "kogus";
+            this.kogusDataGridViewTextBoxColumn.Name = "kogusDataGridViewTextBoxColumn";
+            // 
+            // hindDataGridViewTextBoxColumn
+            // 
+            this.hindDataGridViewTextBoxColumn.DataPropertyName = "Hind";
+            this.hindDataGridViewTextBoxColumn.HeaderText = "Hind";
+            this.hindDataGridViewTextBoxColumn.Name = "hindDataGridViewTextBoxColumn";
+            // 
+            // kustuta_btn
+            // 
+            this.kustuta_btn.Location = new System.Drawing.Point(361, 218);
+            this.kustuta_btn.Name = "kustuta_btn";
+            this.kustuta_btn.Size = new System.Drawing.Size(141, 35);
+            this.kustuta_btn.TabIndex = 13;
+            this.kustuta_btn.Text = "kustuta";
+            this.kustuta_btn.UseVisualStyleBackColor = true;
+            this.kustuta_btn.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.kustuta_btn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.otsipilt_btn);
             this.Controls.Add(this.dataGridView1);
@@ -183,6 +238,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,6 +260,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button otsipilt_btn;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nimetusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kogusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hindDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource toodedBindingSource1;
+        private System.Windows.Forms.Button kustuta_btn;
     }
 }
 
