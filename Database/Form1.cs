@@ -1,74 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Net.NetworkInformation;
 
 namespace Database
 {
     public partial class Form1 : Form
     {
-        SqlConnection conn= new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Database_;Integrated Security=True");
-        SqlCommand cmd;
+        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Database_;Integrated Security=True");
+        SqlCommand command;
         SqlDataAdapter adapter;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Nimi_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'database_DataSet.Tooded' table. You can move, or remove it, as needed.
-            this.toodedTableAdapter.Fill(this.database_DataSet.Tooded);
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public void NaitaAndmet()
-        {
-            this.toodedTableAdapter.Fill(this.database_DataSet.Tooded);
-        }
-
         private void lisa_btn_Click(object sender, EventArgs e)
         {
-            if (Nimetus_txt.Text.Trim() != string.Empty && Kogus_txt.Text.Trim() != string.Empty && Hind_txt.Text.Trim() != string.Empty)
-            {
-                try
-                {
-                    conn.Open();
-                    cmd = new SqlCommand("Insert into Toode(Nimetus, Kogus, Hind) Values (@toode,@kogus,@hind)", conn);
-                    cmd.Parameters.AddWithValue("@toode", Nimetus_txt.Text);
-                    cmd.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
-                    cmd.Parameters.AddWithValue("@hind", Hind_txt.Text);
-                    cmd.ExecuteNonQuery();
+            connection.Open();
+            command = new SqlCommand("INSERT INTO tooded(nimetus, kogus, hind, img) VALUES (@nimetus, @kogus, @hind, @Picture)", connection);
+            command.Parameters.AddWithValue("@nimetus", Nimetus_txt.Text);
+            command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
+            command.Parameters.AddWithValue("@hind", Hind_txt.Text);
 
-                    conn.Close();
-                    NaitaAndmet();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Andmebaasiga viga");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Sisesta andmeid!");
-            }
+            //openFileDialog.Filter = "Bitmap Image (*.bmp)|*.bmp|Metafile Image (*.wmf)|*.wmf|Icon (*.ico)|*.ico|JPEG Image (*.jpg;*.jpeg)|*.jpg;*.jpeg|GIF Image (*.gif)|*.gif|PNG Image (*.png)|*.png";
+
+            //if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    byte[] imageBytes = File.ReadAllBytes(openFileDialog.FileName);
+            //    command.Parameters.AddWithValue("@Picture", imageBytes);
+            //    command.ExecuteNonQuery();
+            //}
+
+            //connection.Close();
+            //productsTableAdapter.Fill(productsDataSet.Products);
         }
         int ID = 0;
 
@@ -111,16 +78,15 @@ namespace Database
             {
                 try
                 {
-                    conn.Open();
-                    cmd = new SqlCommand("UPDATE Toode SET Nimetus=@toode, Kogus=@kogus, Hind=@hind) WHERE Id=@id", conn);
-                    cmd.Parameters.AddWithValue("@id", ID);
-                    cmd.Parameters.AddWithValue("@toode", Nimetus_txt.Text);
-                    cmd.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
-                    cmd.Parameters.AddWithValue("@hind", Hind_txt.Text);
-                    cmd.ExecuteNonQuery();
+                    connection.Open();
+                    command = new SqlCommand("UPDATE toode SET Nimetus=@toode, Kogus=@kogus, Hind=@hind) WHERE Id=@id", connection);
+                    command.Parameters.AddWithValue("@id", ID);
+                    command.Parameters.AddWithValue("@toode", Nimetus_txt.Text);
+                    command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
+                    command.Parameters.AddWithValue("@hind", Hind_txt.Text);
+                    command.ExecuteNonQuery();
 
-                    conn.Close();
-                    NaitaAndmet();
+                    connection.Close();
                     MessageBox.Show("Andmed edukalt uuendatud");
                 }
                 catch (Exception)
@@ -160,6 +126,11 @@ namespace Database
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Nimetus_txt_TextChanged(object sender, EventArgs e)
         {
 
         }

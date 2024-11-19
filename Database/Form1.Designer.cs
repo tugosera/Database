@@ -41,19 +41,19 @@
             this.toodedTableAdapter = new Database.Database_DataSetTableAdapters.ToodedTableAdapter();
             this.uuenda_btn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.otsipilt_btn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.toodedBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nimetusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kogusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hindDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toodedBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.otsipilt_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kustuta_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -72,6 +72,7 @@
             this.Nimetus_txt.Name = "Nimetus_txt";
             this.Nimetus_txt.Size = new System.Drawing.Size(105, 20);
             this.Nimetus_txt.TabIndex = 1;
+            this.Nimetus_txt.TextChanged += new System.EventHandler(this.Nimetus_txt_TextChanged);
             // 
             // Kogus_txt
             // 
@@ -156,29 +157,6 @@
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // otsipilt_btn
-            // 
-            this.otsipilt_btn.Location = new System.Drawing.Point(508, 218);
-            this.otsipilt_btn.Name = "otsipilt_btn";
-            this.otsipilt_btn.Size = new System.Drawing.Size(141, 35);
-            this.otsipilt_btn.TabIndex = 11;
-            this.otsipilt_btn.Text = "Lisa pilt";
-            this.otsipilt_btn.UseVisualStyleBackColor = true;
-            this.otsipilt_btn.Click += new System.EventHandler(this.otsipilt_btn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(215, 93);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(288, 108);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            // 
-            // toodedBindingSource1
-            // 
-            this.toodedBindingSource1.DataMember = "Tooded";
-            this.toodedBindingSource1.DataSource = this.database_DataSet;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -203,6 +181,29 @@
             this.hindDataGridViewTextBoxColumn.DataPropertyName = "Hind";
             this.hindDataGridViewTextBoxColumn.HeaderText = "Hind";
             this.hindDataGridViewTextBoxColumn.Name = "hindDataGridViewTextBoxColumn";
+            // 
+            // toodedBindingSource1
+            // 
+            this.toodedBindingSource1.DataMember = "Tooded";
+            this.toodedBindingSource1.DataSource = this.database_DataSet;
+            // 
+            // otsipilt_btn
+            // 
+            this.otsipilt_btn.Location = new System.Drawing.Point(508, 218);
+            this.otsipilt_btn.Name = "otsipilt_btn";
+            this.otsipilt_btn.Size = new System.Drawing.Size(141, 35);
+            this.otsipilt_btn.TabIndex = 11;
+            this.otsipilt_btn.Text = "Lisa pilt";
+            this.otsipilt_btn.UseVisualStyleBackColor = true;
+            this.otsipilt_btn.Click += new System.EventHandler(this.otsipilt_btn_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(215, 93);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(288, 108);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // kustuta_btn
             // 
@@ -237,8 +238,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
