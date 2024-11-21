@@ -10,32 +10,37 @@ namespace Database
     public partial class Form1 : Form
     {
         SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Database_;Integrated Security=True");
-        SqlCommand command;
-        SqlDataAdapter adapter;
         public Form1()
         {
             InitializeComponent();
         }
 
+        //use database01
+
+        //create table tooded(
+        //ID int primary key identity(1,1),
+        //nimetus varchar(50),
+        //kogus int,
+        //hind float);
+
+        SqlCommand command;
+        SqlDataAdapter adapter;
+        int currentMouseOverRow;
+        ContextMenu contextMenu = new ContextMenu(
+        new MenuItem[] { new MenuItem("Kustuta") }
+        );
+        byte[] bytes;
+        MemoryStream ms;
+
         private void lisa_btn_Click(object sender, EventArgs e)
         {
             connection.Open();
-            command = new SqlCommand("INSERT INTO tooded(nimetus, kogus, hind, img) VALUES (@nimetus, @kogus, @hind, @Picture)", connection);
-            command.Parameters.AddWithValue("@nimetus", Nimetus_txt.Text);
-            command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
-            command.Parameters.AddWithValue("@hind", Hind_txt.Text);
+            command = new SqlCommand("INSERT INTO tooded(nimetus, kogus, hind) VALUES (@nimetus, @kogus, @hind)", connection);
+            command.Parameters.AddWithValue("@Name", Nimetus_txt.Text);
+            command.Parameters.AddWithValue("@Amount", Kogus_txt.Text);
+            command.Parameters.AddWithValue("@Price", Hind_txt.Text);
 
-            //openFileDialog.Filter = "Bitmap Image (*.bmp)|*.bmp|Metafile Image (*.wmf)|*.wmf|Icon (*.ico)|*.ico|JPEG Image (*.jpg;*.jpeg)|*.jpg;*.jpeg|GIF Image (*.gif)|*.gif|PNG Image (*.png)|*.png";
-
-            //if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    byte[] imageBytes = File.ReadAllBytes(openFileDialog.FileName);
-            //    command.Parameters.AddWithValue("@Picture", imageBytes);
-            //    command.ExecuteNonQuery();
-            //}
-
-            //connection.Close();
-            //productsTableAdapter.Fill(productsDataSet.Products);
+            connection.Close();
         }
         int ID = 0;
 

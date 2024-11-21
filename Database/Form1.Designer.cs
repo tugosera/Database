@@ -49,11 +49,13 @@
             this.otsipilt_btn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kustuta_btn = new System.Windows.Forms.Button();
+            this.toodedBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,7 +66,6 @@
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nimetus";
-            this.label1.Click += new System.EventHandler(this.Nimi_Click);
             // 
             // Nimetus_txt
             // 
@@ -105,7 +106,6 @@
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Hind";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // lisa_btn
             // 
@@ -150,7 +150,7 @@
             this.nimetusDataGridViewTextBoxColumn,
             this.kogusDataGridViewTextBoxColumn,
             this.hindDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.toodedBindingSource1;
+            this.dataGridView1.DataSource = this.toodedBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(68, 268);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(509, 170);
@@ -215,6 +215,11 @@
             this.kustuta_btn.UseVisualStyleBackColor = true;
             this.kustuta_btn.Click += new System.EventHandler(this.button1_Click);
             // 
+            // toodedBindingSource2
+            // 
+            this.toodedBindingSource2.DataMember = "Tooded";
+            this.toodedBindingSource2.DataSource = this.database_DataSet;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,12 +239,12 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +272,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hindDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource toodedBindingSource1;
         private System.Windows.Forms.Button kustuta_btn;
+        private System.Windows.Forms.BindingSource toodedBindingSource2;
     }
 }
 
