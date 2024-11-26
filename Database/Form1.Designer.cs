@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.Nimetus_txt = new System.Windows.Forms.TextBox();
-            this.Kogus_txt = new System.Windows.Forms.TextBox();
+            this.Nimetus = new System.Windows.Forms.TextBox();
+            this.Kogus = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.Hind_txt = new System.Windows.Forms.TextBox();
+            this.Hind = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lisa_btn = new System.Windows.Forms.Button();
             this.toodedBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -45,17 +45,17 @@
             this.nimetusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kogusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hindDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toodedBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.toodedBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.otsipilt_btn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kustuta_btn = new System.Windows.Forms.Button();
-            this.toodedBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -67,20 +67,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nimetus";
             // 
-            // Nimetus_txt
+            // Nimetus
             // 
-            this.Nimetus_txt.Location = new System.Drawing.Point(80, 93);
-            this.Nimetus_txt.Name = "Nimetus_txt";
-            this.Nimetus_txt.Size = new System.Drawing.Size(105, 20);
-            this.Nimetus_txt.TabIndex = 1;
-            this.Nimetus_txt.TextChanged += new System.EventHandler(this.Nimetus_txt_TextChanged);
+            this.Nimetus.Location = new System.Drawing.Point(80, 93);
+            this.Nimetus.Name = "Nimetus";
+            this.Nimetus.Size = new System.Drawing.Size(105, 20);
+            this.Nimetus.TabIndex = 1;
+            this.Nimetus.TextChanged += new System.EventHandler(this.Nimetus_txt_TextChanged);
             // 
-            // Kogus_txt
+            // Kogus
             // 
-            this.Kogus_txt.Location = new System.Drawing.Point(80, 139);
-            this.Kogus_txt.Name = "Kogus_txt";
-            this.Kogus_txt.Size = new System.Drawing.Size(105, 20);
-            this.Kogus_txt.TabIndex = 3;
+            this.Kogus.Location = new System.Drawing.Point(80, 139);
+            this.Kogus.Name = "Kogus";
+            this.Kogus.Size = new System.Drawing.Size(105, 20);
+            this.Kogus.TabIndex = 3;
             // 
             // label2
             // 
@@ -91,12 +91,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Kogus";
             // 
-            // Hind_txt
+            // Hind
             // 
-            this.Hind_txt.Location = new System.Drawing.Point(80, 181);
-            this.Hind_txt.Name = "Hind_txt";
-            this.Hind_txt.Size = new System.Drawing.Size(105, 20);
-            this.Hind_txt.TabIndex = 5;
+            this.Hind.Location = new System.Drawing.Point(80, 181);
+            this.Hind.Name = "Hind";
+            this.Hind.Size = new System.Drawing.Size(105, 20);
+            this.Hind.TabIndex = 5;
             // 
             // label3
             // 
@@ -182,6 +182,11 @@
             this.hindDataGridViewTextBoxColumn.HeaderText = "Hind";
             this.hindDataGridViewTextBoxColumn.Name = "hindDataGridViewTextBoxColumn";
             // 
+            // toodedBindingSource2
+            // 
+            this.toodedBindingSource2.DataMember = "Tooded";
+            this.toodedBindingSource2.DataSource = this.database_DataSet;
+            // 
             // toodedBindingSource1
             // 
             this.toodedBindingSource1.DataMember = "Tooded";
@@ -215,11 +220,6 @@
             this.kustuta_btn.UseVisualStyleBackColor = true;
             this.kustuta_btn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toodedBindingSource2
-            // 
-            this.toodedBindingSource2.DataMember = "Tooded";
-            this.toodedBindingSource2.DataSource = this.database_DataSet;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,20 +231,20 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.uuenda_btn);
             this.Controls.Add(this.lisa_btn);
-            this.Controls.Add(this.Hind_txt);
+            this.Controls.Add(this.Hind);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Kogus_txt);
+            this.Controls.Add(this.Kogus);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Nimetus_txt);
+            this.Controls.Add(this.Nimetus);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toodedBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,10 +253,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Nimetus_txt;
-        private System.Windows.Forms.TextBox Kogus_txt;
+        private System.Windows.Forms.TextBox Nimetus;
+        private System.Windows.Forms.TextBox Kogus;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox Hind_txt;
+        private System.Windows.Forms.TextBox Hind;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button lisa_btn;
         private Database_DataSet database_DataSet;

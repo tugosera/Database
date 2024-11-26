@@ -9,7 +9,7 @@ namespace Database
 {
     public partial class Form1 : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Database_;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=database01;Integrated Security=True");
         public Form1()
         {
             InitializeComponent();
@@ -36,9 +36,10 @@ namespace Database
         {
             connection.Open();
             command = new SqlCommand("INSERT INTO tooded(nimetus, kogus, hind) VALUES (@nimetus, @kogus, @hind)", connection);
-            command.Parameters.AddWithValue("@Name", Nimetus_txt.Text);
-            command.Parameters.AddWithValue("@Amount", Kogus_txt.Text);
-            command.Parameters.AddWithValue("@Price", Hind_txt.Text);
+            command.Parameters.AddWithValue("@nimetus", Nimetus.Text);
+            command.Parameters.AddWithValue("@kogus", Kogus.Text);
+            command.Parameters.AddWithValue("@hind", Hind.Text);
+            command.ExecuteNonQuery();
 
             connection.Close();
         }
@@ -47,9 +48,9 @@ namespace Database
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellEventArgs e)
         {
             ID = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
-            Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Nimetus"].Value.ToString();
-            Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Kogus"].Value.ToString();
-            Nimetus_txt.Text = dataGridView1.Rows[e.RowIndex].Cells["Hind"].Value.ToString();
+            Nimetus.Text = dataGridView1.Rows[e.RowIndex].Cells["Nimetus"].Value.ToString();
+            Nimetus.Text = dataGridView1.Rows[e.RowIndex].Cells["Kogus"].Value.ToString();
+            Nimetus.Text = dataGridView1.Rows[e.RowIndex].Cells["Hind"].Value.ToString();
             try 
             {
                 pictureBox1.Image = Image.FromFile(Path.Combine(Path.GetFullPath(@"..\..\Pildid"), dataGridView1.Rows[e.RowIndex].Cells["Pilt"].Value.ToString()));
@@ -79,16 +80,16 @@ namespace Database
 
         private void uuenda_btn_Click(object sender, EventArgs e)
         {
-            if (Nimetus_txt.Text.Trim() != string.Empty && Kogus_txt.Text.Trim() != string.Empty && Hind_txt.Text.Trim() != string.Empty)
+            if (Nimetus.Text.Trim() != string.Empty && Kogus.Text.Trim() != string.Empty && Hind.Text.Trim() != string.Empty)
             {
                 try
                 {
                     connection.Open();
                     command = new SqlCommand("UPDATE toode SET Nimetus=@toode, Kogus=@kogus, Hind=@hind) WHERE Id=@id", connection);
                     command.Parameters.AddWithValue("@id", ID);
-                    command.Parameters.AddWithValue("@toode", Nimetus_txt.Text);
-                    command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
-                    command.Parameters.AddWithValue("@hind", Hind_txt.Text);
+                    command.Parameters.AddWithValue("@toode", Nimetus.Text);
+                    command.Parameters.AddWithValue("@kogus", Kogus.Text);
+                    command.Parameters.AddWithValue("@hind", Hind.Text);
                     command.ExecuteNonQuery();
 
                     connection.Close();
@@ -115,14 +116,14 @@ namespace Database
             open.Multiselect = false;
             open.Filter = "Images Files(*.jpeg;*.png;*.bmp;*.jpg)| *.jpeg;*.png;*.bmp;*.jpg";
             FileInfo fileInfo= new FileInfo(@"C:\Users\opilane.TTHK\Pictures\"+open.FileName);
-            if (open.ShowDialog()==DialogResult.OK && Nimetus_txt.Text!=null)
+            if (open.ShowDialog()==DialogResult.OK && Nimetus.Text!=null)
             {
                 save = new SaveFileDialog();
                 save.InitialDirectory = Path.GetFullPath(@"..\..\..\Pildid");
                 string extension=Path.GetExtension(open.FileName);
-                save.FileName = Nimetus_txt.Text+extension;
+                save.FileName = Nimetus.Text+extension;
                 save.Filter = "Images" + Path.GetExtension(open.FileName) + "|" + Path.GetExtension(open.FileName);
-                if (save.ShowDialog()==DialogResult.OK && Nimetus_txt != null)
+                if (save.ShowDialog()==DialogResult.OK && Nimetus != null)
                 {
                     File.Copy(open.FileName, save.FileName);
                     pictureBox1.Image = Image.FromFile(save.FileName);
